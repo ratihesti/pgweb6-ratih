@@ -288,15 +288,15 @@
                 });
         }
 
-        loadGeoJSON('DATA/batas_desa.geojson', 'Batas Desa', { style: { color: '#7a7a7a', weight: 1, dashArray: '4, 4' } });
-        loadGeoJSON('DATA/jalan.geojson', 'Jalan', { style: styleJalan, pane: 'jalanPane' });
-        loadGeoJSON('DATA/sungai.geojson', 'Sungai', { style: { color: '#0055ff', weight: 1.5 }, pane: 'sungaiPane' });
-        loadGeoJSON('DATA/toponimi.geojson', 'Toponimi (Nama Lokasi)', {
+        loadGeoJSON('data/batas_desa.geojson', 'Batas Desa', { style: { color: '#7a7a7a', weight: 1, dashArray: '4, 4' } });
+        loadGeoJSON('data/jalan.geojson', 'Jalan', { style: styleJalan, pane: 'jalanPane' });
+        loadGeoJSON('data/sungai.geojson', 'Sungai', { style: { color: '#0055ff', weight: 1.5 }, pane: 'sungaiPane' });
+        loadGeoJSON('data/toponimi.geojson', 'Toponimi (Nama Lokasi)', {
             pointToLayer: (feature, latlng) => L.marker(latlng),
             onEachFeature: (feature, layer) => { if (feature.properties && feature.properties.NAMOBJ) { layer.bindPopup(feature.properties.NAMOBJ); } }
         });
 
-        fetch('DATA/batas_kecamatan.geojson')
+        fetch('data/batas_kecamatan.geojson')
             .then(response => response.json())
             .then(data => {
                 var batasKecamatanLayer = L.geoJSON(data, {
